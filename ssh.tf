@@ -3,6 +3,6 @@ resource "sshkey_rsa_key_pair" "default" {
 }
 
 resource "aws_key_pair" "deployer" {
-  key_name   = "default"
+  key_name   = "${random_pet.random.id}-key"
   public_key = sshkey_rsa_key_pair.default.public_key
 }
